@@ -1,6 +1,6 @@
 package clock
 
-import "strconv"
+import "fmt"
 
 const testVersion = 4
 
@@ -40,19 +40,7 @@ func validate(hour, minute int) Clock {
 }
 
 func (clock Clock) String() string {
-	var hour, minute string
-
-	if clock.hour < 10 {
-		hour = "0" + strconv.Itoa(clock.hour)
-	} else {
-		hour = strconv.Itoa(clock.hour)
-	}
-	if clock.minute < 10 {
-		minute = "0" + strconv.Itoa(clock.minute)
-	} else {
-		minute = strconv.Itoa(clock.minute)
-	}
-	return hour + ":" + minute
+	return fmt.Sprintf("%02d:%02d", clock.hour, clock.minute)
 }
 
 func (clock Clock) Add(minutesToAdd int) Clock {
